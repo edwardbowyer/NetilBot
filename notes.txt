@@ -1,0 +1,20 @@
+NetilBot (Runninng on Az web apps)
+
+IN> Netil Radio stream (airtime URL?)
+    Need to know:
+        - URL
+        - Schedule 
+        - Show cut off times
+
+OUT>
+    - Tracklisting in a format that is usefull and processable (CSV? JSON?)
+    - Show purposes, PRS
+
+    - LIVE update on netilradio.com when a song is playing.
+
+
+Next steps: 
+- How to load a URI stream in Python
+- How to handle analysis of when a track changes
+- How to connect to live netilradio feed (Airtime?)
+

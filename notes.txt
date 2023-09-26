@@ -23,4 +23,3 @@ Is there a limit cap on shazam api calls? How often can we call.
     (CHAT GPT NOTES)
   
 - How to handle analysis of when a track changes
-- How to connect to live netilradio feed (Airtime?)

@@ -4,7 +4,8 @@ import requests
 from pydub import AudioSegment
 from io import BytesIO
 
-STREAM_URI = "https://netilradio.airtime.pro/api/live-info" # Need to parameterise/appsettings this
+STREAM_URI = "https://netilradio.airtime.pro/netilradio_a" # Need to parameterise/appsettings this
+STREAM_INFO_URI = "https://netilradio.airtime.pro/api/live-info" # Need to parameterise/appsettings this
 CHUNK_SIZE = 4096  # Adjust based on the required buffer size should be config 
 
 def process_audio_chunk(chunk):

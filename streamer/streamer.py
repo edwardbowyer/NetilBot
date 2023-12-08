@@ -1,10 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import requests
+import json
 from pydub import AudioSegment
 from io import BytesIO
 
-STREAM_URI = "https://netilradio.airtime.pro/netilradio_a" # Need to parameterise/appsettings this
+STREAM_URI = "https://netilradio.out.airtime.pro/netilradio_a" # Need to parameterise/appsettings this
 STREAM_INFO_URI = "https://netilradio.airtime.pro/api/live-info" # Need to parameterise/appsettings this
 CHUNK_SIZE = 4096  # Adjust based on the required buffer size should be config 
 
@@ -18,7 +19,7 @@ def process_audio_chunk(chunk):
         # For demonstration, plot the waveform of the chunk
         plt.figure(figsize=(10, 4))
         plt.plot(samples)
-        plt.title('Waveform of Chunk')
+        plt.title('Waveform of Chunk from')
         plt.xlabel('Sample')
         plt.ylabel('Amplitude')
         plt.show()
@@ -28,7 +29,13 @@ def process_audio_chunk(chunk):
     except Exception as e:
         print(f"Error processing audio chunk: {e}")
 
-def stream_audio():
+def load_stream_title() -> str:
+    with requests.get(STREAM_INFO_URI) as response:
+        response.raise_for_status()
+        content_json = json.loads(response.content)
+        return content_json['currentShow'][0]['name']
+
+def stream_audio(title: str):
     with requests.get(STREAM_URI, stream=True) as response:
         response.raise_for_status()
         audio_chunk = b""
